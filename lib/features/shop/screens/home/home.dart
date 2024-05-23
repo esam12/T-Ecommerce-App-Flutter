@@ -1,5 +1,7 @@
+import 'package:eco/common/layouts/grid_layout.dart';
 import 'package:eco/common/widgets/custom_shapes/containers/primery_header_container.dart';
 import 'package:eco/common/widgets/custom_shapes/containers/search_container.dart';
+import 'package:eco/common/widgets/products/product_cards/product_card_vertical.dart';
 import 'package:eco/features/shop/screens/home/widgets/home_appbar.dart';
 import 'package:eco/features/shop/screens/home/widgets/home_categories.dart';
 import 'package:eco/features/shop/screens/home/widgets/promo_slider.dart';
@@ -19,7 +21,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               /// Header
-              TPrimeryHeaderContainer(
+              const TPrimeryHeaderContainer(
                 child: Column(
                   children: [
                     /// AppBar
@@ -41,15 +43,28 @@ class HomeScreen extends StatelessWidget {
 
               /// Body
               Padding(
-                padding: EdgeInsets.all(TSizes.defaultSpace),
-                child: TPromoSlider(
-                  banners: [
-                    TImages.promoBanner1,
-                    TImages.promoBanner2,
-                    TImages.promoBanner3,
+                padding: const EdgeInsets.all(TSizes.defaultSpace),
+                child: Column(
+                  children: [
+                    /// Promo Slider
+                    const TPromoSlider(
+                      banners: [
+                        TImages.promoBanner1,
+                        TImages.promoBanner2,
+                        TImages.promoBanner3,
+                      ],
+                    ),
+                    const SizedBox(height: TSizes.spaceBtwSections),
+
+                    /// Popular Products
+                    TGridLayout(
+                      itemCount: 6,
+                      itemBuilder: (context, index) =>
+                          const TProductCardVertical(),
+                    )
                   ],
                 ),
-              )
+              ),
             ],
           ),
         ),
