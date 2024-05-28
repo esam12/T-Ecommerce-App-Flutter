@@ -1,3 +1,5 @@
+import 'package:eco/features/personalization/screens/profile/profile.dart';
+import 'package:eco/features/shop/screens/product_details/product_details.dart';
 import 'package:eco/navigation_menu.dart';
 import 'package:eco/utils/constants/text_strings.dart';
 import 'package:eco/utils/theme/theme.dart';
@@ -16,7 +18,7 @@ class App extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       // initialBinding: GeneralBindings(),
-      home: const NavigationMenu(),
+      home: const ProductDetailsScreen(),
     );
   }
 }
