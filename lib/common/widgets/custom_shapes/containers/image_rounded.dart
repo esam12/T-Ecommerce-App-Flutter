@@ -1,4 +1,3 @@
-
 import 'package:eco/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +13,8 @@ class TRoundedImage extends StatelessWidget {
     this.isNetworkImage = false,
     this.onTab,
     this.borderRaduis = TSizes.md,
+    this.backgroundColor,
+    this.border,
   });
 
   final double? width, height;
@@ -21,9 +22,11 @@ class TRoundedImage extends StatelessWidget {
   final bool applyImageRadius;
   final BoxFit? fit;
   final EdgeInsetsGeometry? padding;
+  final Color? backgroundColor;
   final bool isNetworkImage;
   final VoidCallback? onTab;
   final double borderRaduis;
+  final BoxBorder? border;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +36,10 @@ class TRoundedImage extends StatelessWidget {
         width: width,
         height: height,
         padding: padding,
+        decoration: BoxDecoration(
+            border: border,
+            color: backgroundColor,
+            borderRadius: BorderRadius.circular(borderRaduis)),
         child: ClipRRect(
           borderRadius: applyImageRadius
               ? BorderRadius.circular(borderRaduis)

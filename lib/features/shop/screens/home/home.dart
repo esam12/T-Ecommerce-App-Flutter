@@ -27,20 +27,21 @@ class HomeScreen extends StatelessWidget {
                   /// AppBar
                   THomeAppBar(),
                   SizedBox(height: TSizes.spaceBtwItems),
-    
+
                   /// SearchBar
                   TSearchContainer(
                     text: "Search in Store",
                     icon: Iconsax.search_normal,
                   ),
                   SizedBox(height: TSizes.spaceBtwItems),
-    
+
                   /// Categories
                   THomeCategories(),
+                  SizedBox(height: TSizes.spaceBtwSections)
                 ],
               ),
             ),
-    
+
             /// Body
             Padding(
               padding: const EdgeInsets.all(TSizes.defaultSpace),
@@ -55,11 +56,11 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections),
-    
+
                   /// Popular Products
                   const TSectionHeader(title: "Popular Products"),
                   const SizedBox(height: TSizes.spaceBtwItems),
-    
+
                   TGridLayout(
                     itemCount: 6,
                     itemBuilder: (context, index) =>
