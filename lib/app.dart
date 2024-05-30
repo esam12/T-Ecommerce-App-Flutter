@@ -1,5 +1,4 @@
-import 'package:eco/features/shop/screens/order/order.dart';
-import 'package:eco/features/shop/screens/sub_category/sub_category.dart';
+import 'package:eco/features/shop/screens/all_products/all_products.dart';
 import 'package:eco/utils/constants/text_strings.dart';
 import 'package:eco/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +16,7 @@ class App extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       // initialBinding: GeneralBindings(),
-      home: const SubCategoriesScreen(),
+      home: const AllProductsScreen(),
     );
   }
 }
