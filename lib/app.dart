@@ -1,4 +1,4 @@
-import 'package:eco/features/shop/screens/checkout/checkout.dart';
+import 'package:eco/features/shop/screens/order/order.dart';
 import 'package:eco/utils/constants/text_strings.dart';
 import 'package:eco/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class App extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       // initialBinding: GeneralBindings(),
-      home: const CheckOutScreen(),
+      home: const OrderScreen(),
     );
   }
 }
