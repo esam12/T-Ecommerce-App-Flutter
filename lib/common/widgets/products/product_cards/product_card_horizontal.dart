@@ -1,4 +1,3 @@
-import 'package:eco/common/styles/shadows.dart';
 import 'package:eco/common/widgets/custom_shapes/containers/circular_icon.dart';
 import 'package:eco/common/widgets/custom_shapes/containers/image_rounded.dart';
 import 'package:eco/common/widgets/custom_shapes/containers/rounded_container.dart';
@@ -94,6 +93,8 @@ class TProductCardHorizontal extends StatelessWidget {
                       TBrandTitleWithVerifiedIcon(title: 'Nike'),
                     ],
                   ),
+                  // Use Spacer() to utilize all the space to set the price and the cart button at the bottom.
+                  // This usually happens when product title is in single line or 2 lines (Max)
                   const Spacer(),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
