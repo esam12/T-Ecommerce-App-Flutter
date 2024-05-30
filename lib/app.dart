@@ -1,6 +1,4 @@
-import 'package:eco/features/personalization/screens/address/address.dart';
-import 'package:eco/features/shop/screens/cart/cart.dart';
-import 'package:eco/features/shop/screens/product_reviews/product_reviews.dart';
+import 'package:eco/features/shop/screens/checkout/checkout.dart';
 import 'package:eco/utils/constants/text_strings.dart';
 import 'package:eco/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +16,7 @@ class App extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       // initialBinding: GeneralBindings(),
-      home: const CartScreen(),
+      home: const CheckOutScreen(),
     );
   }
 }

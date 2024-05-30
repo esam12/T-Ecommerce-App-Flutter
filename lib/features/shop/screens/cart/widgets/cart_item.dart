@@ -4,18 +4,18 @@ import 'package:eco/common/widgets/texts/product_title_text.dart';
 import 'package:eco/utils/constants/colors.dart';
 import 'package:eco/utils/constants/image_strings.dart';
 import 'package:eco/utils/constants/sizes.dart';
+import 'package:eco/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 class TCartItem extends StatelessWidget {
   const TCartItem({
     super.key,
-    required this.dark,
   });
-
-  final bool dark;
 
   @override
   Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
+
     return Row(
       children: [
         /// Image
@@ -41,7 +41,7 @@ class TCartItem extends StatelessWidget {
               ),
               const Flexible(
                 child: TProductTitleText(
-                  title: 'Green Nike sports shoe Green Nike sports shoe',
+                  title: 'Green Nike sports shoe',
                   maxLines: 1,
                 ),
               ),
