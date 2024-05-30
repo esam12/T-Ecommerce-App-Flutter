@@ -39,6 +39,8 @@ class TFeaturedBrandItem extends StatelessWidget {
             const SizedBox(width: TSizes.spaceBtwItems / 2),
 
             /// Text
+            // [Expanded] & Column [MainAxisSize.min] is important to keep the elements in the verical center and also
+            // to keep text inside the boundaries.
             Expanded(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
