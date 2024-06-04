@@ -1,6 +1,7 @@
 import 'package:eco/common/styles/spacing_styles.dart';
 import 'package:eco/common/widgets/login_signup/form_divider.dart';
 import 'package:eco/common/widgets/login_signup/social_buttons.dart';
+import 'package:eco/features/auth/controllers/login/login_controller.dart';
 import 'package:eco/features/auth/screens/login/widgets/login_form.dart';
 import 'package:eco/features/auth/screens/login/widgets/login_header.dart';
 import 'package:eco/utils/constants/sizes.dart';
@@ -13,26 +14,29 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: TSpacingStyles.paddingWithAppBarHeight,
-          child: Column(
-            children: [
-              /// Logo, Title & Sub-Title
-              const TLoginHeader(),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: TSpacingStyles.paddingWithAppBarHeight,
+            child: Column(
+              children: [
+                /// Logo, Title & Sub-Title
+                const TLoginHeader(),
 
-              /// Form
-              const TLoginForm(),
+                /// Form
+                const TLoginForm(),
 
-              /// Divider
-              TFormDivider(dividerText: TTexts.orSignInWith.capitalize!),
-              const SizedBox(height: TSizes.spaceBtwSections),
+                /// Divider
+                TFormDivider(dividerText: TTexts.orSignInWith.capitalize!),
+                const SizedBox(height: TSizes.spaceBtwSections),
 
-              const TSocialButtons()
+                const TSocialButtons()
 
-              /// Footer
-            ],
+                /// Footer
+              ],
+            ),
           ),
         ),
       ),

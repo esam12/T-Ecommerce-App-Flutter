@@ -10,24 +10,24 @@ class UserAddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          backgroundColor: TColors.primary,
-          child: const Icon(
-            Iconsax.add,
-            color: TColors.white,
-          ),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: TColors.primary,
+        child: const Icon(
+          Iconsax.add,
+          color: TColors.white,
         ),
-        appBar: TAppbar(
-          showBackArrow: true,
-          title: Text(
-            'Addresses',
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
+      ),
+      appBar: TAppbar(
+        showBackArrow: true,
+        title: Text(
+          'Addresses',
+          style: Theme.of(context).textTheme.headlineSmall,
         ),
-        body: const SingleChildScrollView(
+      ),
+      body: SafeArea(
+        child: const SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(TSizes.defaultSpace),
             child: Column(

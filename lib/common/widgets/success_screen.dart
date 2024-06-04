@@ -4,6 +4,7 @@ import 'package:eco/utils/constants/sizes.dart';
 import 'package:eco/utils/constants/text_strings.dart';
 import 'package:eco/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class SuccessScreen extends StatelessWidget {
   const SuccessScreen(
@@ -28,10 +29,8 @@ class SuccessScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 /// Image
-                Image(
-                  width: THelperFunctions.screenWidth() * 0.6,
-                  image: AssetImage(image),
-                ),
+                Lottie.asset(
+                    width: THelperFunctions.screenWidth() * 0.6, image),
                 const SizedBox(height: TSizes.spaceBtwSections),
 
                 /// Title & Sub-Title

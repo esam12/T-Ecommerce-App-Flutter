@@ -18,27 +18,26 @@ class NavigationMenu extends StatelessWidget {
     final darkMode = THelperFunctions.isDarkMode(context);
 
     return Obx(
-      () => SafeArea(
-        child: Scaffold(
-          bottomNavigationBar: NavigationBar(
-            height: 80,
-            elevation: 0,
-            selectedIndex: controller.selectedIndex.value,
-            onDestinationSelected: (index) =>
-                controller.selectedIndex.value = index,
-            backgroundColor: darkMode ? TColors.black : TColors.white,
-            indicatorColor: darkMode
-                ? TColors.white.withOpacity(0.1)
-                : TColors.black.withOpacity(0.1),
-            destinations: const [
-              NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
-              NavigationDestination(icon: Icon(Iconsax.shop), label: 'Store'),
-              NavigationDestination(
-                  icon: Icon(Iconsax.heart), label: 'Wishlist'),
-              NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
-            ],
-          ),
-          body: controller.screens[controller.selectedIndex.value],
+      () => Scaffold(
+        bottomNavigationBar: NavigationBar(
+          height: 80,
+          elevation: 0,
+          selectedIndex: controller.selectedIndex.value,
+          onDestinationSelected: (index) =>
+              controller.selectedIndex.value = index,
+          backgroundColor: darkMode ? TColors.black : TColors.white,
+          indicatorColor: darkMode
+              ? TColors.white.withOpacity(0.1)
+              : TColors.black.withOpacity(0.1),
+          destinations: const [
+            NavigationDestination(icon: Icon(Iconsax.home), label: 'Home'),
+            NavigationDestination(icon: Icon(Iconsax.shop), label: 'Store'),
+            NavigationDestination(icon: Icon(Iconsax.heart), label: 'Wishlist'),
+            NavigationDestination(icon: Icon(Iconsax.user), label: 'Profile'),
+          ],
+        ),
+        body: SafeArea(
+          child: controller.screens[controller.selectedIndex.value],
         ),
       ),
     );

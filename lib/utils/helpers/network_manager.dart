@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:eco/utils/popups/loaders.dart';
 import 'package:get/get.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/services.dart';
@@ -10,21 +11,31 @@ class NetworkManager extends GetxController {
   static NetworkManager get instance => Get.find();
 
   final Connectivity _connectivity = Connectivity();
-  late StreamSubscription<ConnectivityResult> _connectivitySubscription;
+  late StreamSubscription<List<ConnectivityResult>> _connectivitySubscription;
+
+  //late StreamSubscription<ConnectivityResult> _connectivitySubscription;
   final Rx<ConnectivityResult> _connectionStatus = ConnectivityResult.none.obs;
 
   /// Initialize the network manager and set up a stream to continually check the connection status.
   @override
   void onInit() {
     super.onInit();
-  //  _connectivitySubscription = _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
+    _connectivitySubscription =
+        _connectivity.onConnectivityChanged.listen(_updateConnectionStatus);
   }
 
   /// Update the connection status based on changes in connectivity and show a relevant popup for no internet connection.
-  Future<void> _updateConnectionStatus(ConnectivityResult result) async {
-    _connectionStatus.value = result;
-    if (_connectionStatus.value == ConnectivityResult.none) {
-      //TLoaders.warningSnackBar(title: 'No Internet Connection');
+  Future<void> _updateConnectionStatus(List<ConnectivityResult> results) async {
+    // Check if any connection type is not 'none'
+    final isConnected =
+        results.any((result) => result != ConnectivityResult.none);
+
+    _connectionStatus.value = isConnected
+        ? ConnectivityResult.mobile
+        : ConnectivityResult.none; // You can adjust this logic
+
+    if (!isConnected) {
+      TLoaders.warningSnackBar(title: 'No Internet Connection');
     }
   }
 
