@@ -1,4 +1,5 @@
-import 'package:eco/features/shop/screens/all_products/all_products.dart';
+import 'package:eco/bindings/general_bindings.dart';
+import 'package:eco/utils/constants/colors.dart';
 import 'package:eco/utils/constants/text_strings.dart';
 import 'package:eco/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -15,8 +16,14 @@ class App extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
-      // initialBinding: GeneralBindings(),
-      home: const AllProductsScreen(),
+       initialBinding: GeneralBindings(),
+      /// Show Loader or Circular Progress Indicator mean while Authentication Repository is deciding to show relevant screen
+      home: const Scaffold(
+        backgroundColor: TColors.primary,
+        body: Center(
+          child: CircularProgressIndicator(color: TColors.white),
+        ),
+      ),
     );
   }
 }

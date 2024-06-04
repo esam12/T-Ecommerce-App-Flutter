@@ -16,52 +16,54 @@ class AddNewAddressScreen extends StatelessWidget {
         showBackArrow: true,
         title: Text('Add New Address'),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(TSizes.defaultSpace),
-          child: Form(
-            child: Column(
-              children: [
-                const TTextFormField(
-                    prefixIcon: Iconsax.user, labelText: 'Name'),
-                const SizedBox(height: TSizes.spaceBtwInputFields),
-                const TTextFormField(
-                    prefixIcon: Iconsax.mobile, labelText: 'Phone Number'),
-                const SizedBox(height: TSizes.spaceBtwInputFields),
-                const Row(
-                  children: [
-                    Expanded(
-                        child: TTextFormField(
-                            prefixIcon: Iconsax.building_31,
-                            labelText: 'Street')),
-                    SizedBox(width: TSizes.spaceBtwInputFields),
-                    Expanded(
-                        child: TTextFormField(
-                            prefixIcon: Iconsax.code,
-                            labelText: 'Postal Code')),
-                  ],
-                ),
-                const SizedBox(height: TSizes.spaceBtwInputFields),
-                const Row(
-                  children: [
-                    Expanded(
-                        child: TTextFormField(
-                            prefixIcon: Iconsax.building, labelText: 'City')),
-                    SizedBox(width: TSizes.spaceBtwInputFields),
-                    Expanded(
-                        child: TTextFormField(
-                            prefixIcon: Iconsax.activity, labelText: 'State')),
-                  ],
-                ),
-                const SizedBox(height: TSizes.spaceBtwInputFields),
-                const TTextFormField(
-                    prefixIcon: Iconsax.global, labelText: 'Country'),
-                const SizedBox(height: TSizes.spaceBtwSections),
-                TElevatedButton(
-                  text: "Save",
-                  onPressed: () {},
-                )
-              ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(TSizes.defaultSpace),
+            child: Form(
+              child: Column(
+                children: [
+                  const TTextFormField(
+                      prefixIcon: Iconsax.user, labelText: 'Name'),
+                  const SizedBox(height: TSizes.spaceBtwInputFields),
+                  const TTextFormField(
+                      prefixIcon: Iconsax.mobile, labelText: 'Phone Number'),
+                  const SizedBox(height: TSizes.spaceBtwInputFields),
+                  const Row(
+                    children: [
+                      Expanded(
+                          child: TTextFormField(
+                              prefixIcon: Iconsax.building_31,
+                              labelText: 'Street')),
+                      SizedBox(width: TSizes.spaceBtwInputFields),
+                      Expanded(
+                          child: TTextFormField(
+                              prefixIcon: Iconsax.code,
+                              labelText: 'Postal Code')),
+                    ],
+                  ),
+                  const SizedBox(height: TSizes.spaceBtwInputFields),
+                  const Row(
+                    children: [
+                      Expanded(
+                          child: TTextFormField(
+                              prefixIcon: Iconsax.building, labelText: 'City')),
+                      SizedBox(width: TSizes.spaceBtwInputFields),
+                      Expanded(
+                          child: TTextFormField(
+                              prefixIcon: Iconsax.activity, labelText: 'State')),
+                    ],
+                  ),
+                  const SizedBox(height: TSizes.spaceBtwInputFields),
+                  const TTextFormField(
+                      prefixIcon: Iconsax.global, labelText: 'Country'),
+                  const SizedBox(height: TSizes.spaceBtwSections),
+                  TElevatedButton(
+                    text: "Save",
+                    onPressed: () {},
+                  )
+                ],
+              ),
             ),
           ),
         ),

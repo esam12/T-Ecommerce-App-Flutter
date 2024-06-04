@@ -1,7 +1,9 @@
+import 'package:eco/features/auth/controllers/signup/signup_controller.dart';
 import 'package:eco/utils/constants/colors.dart';
 import 'package:eco/utils/constants/text_strings.dart';
 import 'package:eco/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TTermsAndConditionsAndCheckbox extends StatelessWidget {
   const TTermsAndConditionsAndCheckbox({
@@ -11,12 +13,15 @@ class TTermsAndConditionsAndCheckbox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
+    final controller = SignupController.instance;
 
     return Row(
       children: [
-        Checkbox(
-          value: true,
-          onChanged: (val) {},
+        Obx(
+          () => Checkbox(
+            value: controller.privacyPolicy.value,
+            onChanged: (val) => controller.privacyPolicy.value = val!,
+          ),
         ),
         Expanded(
           child: Text.rich(
