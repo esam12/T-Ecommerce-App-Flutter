@@ -1,4 +1,5 @@
 import 'package:eco/features/auth/controllers/login/login_controller.dart';
+import 'package:eco/features/auth/screens/password_configuration/forget_password.dart';
 import 'package:eco/features/auth/screens/signup/signup.dart';
 import 'package:eco/utils/constants/sizes.dart';
 import 'package:eco/utils/constants/text_strings.dart';
@@ -72,7 +73,7 @@ class TLoginForm extends StatelessWidget {
 
                 /// Forget Password
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () => Get.to(() => const ForgetPasswordScreen()),
                   child: const Text(TTexts.forgetPassword),
                 )
               ],

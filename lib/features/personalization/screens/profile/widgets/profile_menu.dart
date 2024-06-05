@@ -26,7 +26,7 @@ class TProfileMenu extends StatelessWidget {
             Expanded(
               flex: 3,
               child: Text(title,
-                  style: Theme.of(context).textTheme.bodySmall,
+                  style: Theme.of(context).textTheme.labelSmall,
                   overflow: TextOverflow.ellipsis),
             ),
             Expanded(

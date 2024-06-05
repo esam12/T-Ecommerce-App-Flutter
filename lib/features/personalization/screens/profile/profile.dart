@@ -1,10 +1,13 @@
 import 'package:eco/common/widgets/appbar/appbar.dart';
 import 'package:eco/common/widgets/custom_shapes/containers/circular_image.dart';
 import 'package:eco/common/widgets/texts/section_heading.dart';
+import 'package:eco/features/personalization/controllers/user_controller.dart';
+import 'package:eco/features/personalization/screens/profile/widgets/change_name.dart';
 import 'package:eco/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:eco/utils/constants/image_strings.dart';
 import 'package:eco/utils/constants/sizes.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -12,6 +15,7 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = UserController.instance;
     return SafeArea(
       child: Scaffold(
         appBar: const TAppbar(
@@ -39,51 +43,61 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-      
+
                 /// Details
                 const SizedBox(height: TSizes.spaceBtwItems / 2),
                 const Divider(),
                 const SizedBox(height: TSizes.spaceBtwItems),
-      
+
                 const TSectionHeader(
                     title: 'Profile information', showActionButton: false),
                 const SizedBox(height: TSizes.spaceBtwItems),
-      
-                TProfileMenu(title: "Name", value: 'ISAM EL-ZOBI', onTap: () {}),
-                TProfileMenu(title: "Username", value: 'isam_12', onTap: () {}),
-      
+
+                TProfileMenu(
+                    title: "Name",
+                    value: controller.user.value.fullName,
+                    onTap: () => Get.to(() => const ChangeName())),
+                TProfileMenu(
+                    title: "Username",
+                    value: controller.user.value.userName,
+                    onTap: () {}),
+
                 const SizedBox(height: TSizes.spaceBtwItems),
                 const Divider(),
                 const SizedBox(height: TSizes.spaceBtwItems),
-      
+
                 /// Heading Personal Info
                 const TSectionHeader(
                     title: 'Personal information', showActionButton: false),
                 const SizedBox(height: TSizes.spaceBtwItems),
-      
+
                 TProfileMenu(
                   title: "User ID",
-                  value: '778258',
+                  value: controller.user.value.id,
                   onTap: () {},
                   icon: Iconsax.copy,
                 ),
                 TProfileMenu(
                     title: "E-mail",
-                    value: 'alzeabiesam@gmail.com',
+                    value: controller.user.value.email,
                     onTap: () {}),
                 TProfileMenu(
-                    title: "Phone Number", value: '+905377021108', onTap: () {}),
+                    title: "Phone Number",
+                    value: controller.user.value.phoneNumber,
+                    onTap: () {}),
                 TProfileMenu(title: "Gender", value: 'Male', onTap: () {}),
                 TProfileMenu(
-                    title: "Date of Briht", value: '01 Jan, 1999', onTap: () {}),
-      
-                Divider(),
-                SizedBox(height: TSizes.spaceBtwItems),
-      
+                    title: "Date of Briht",
+                    value: '01 Jan, 1999',
+                    onTap: () {}),
+
+                const Divider(),
+                const SizedBox(height: TSizes.spaceBtwItems),
+
                 Center(
                   child: TextButton(
-                    onPressed: () {},
-                    child: Text(
+                    onPressed: () => controller.deleteAccountWarningPopup(),
+                    child: const Text(
                       "Close Account",
                       style: TextStyle(color: Colors.red),
                     ),
