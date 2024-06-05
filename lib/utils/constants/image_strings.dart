@@ -37,6 +37,7 @@ class TImages {
 
   // -- Animations
   static const String successfullyRegisterAnimation = "assets/images/animations/72462-check-register.json";
+  static const String docerAnimation = "assets/images/animations/141594-animation-of-docer.json";
   static const String productsIllustration = "assets/images/animations/sammy-line-workout.gif";
   static const String productsSaleIllustration = "assets/images/animations/sammy-line-sale.png";
   static const String staticSuccessIllustration = "assets/images/animations/sammy-line-success.png";

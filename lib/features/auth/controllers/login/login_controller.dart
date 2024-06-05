@@ -1,4 +1,6 @@
 import 'package:eco/data/repositories/authentication/authentication_repository.dart';
+import 'package:eco/features/personalization/controllers/user_controller.dart';
+import 'package:eco/utils/constants/image_strings.dart';
 import 'package:eco/utils/helpers/network_manager.dart';
 import 'package:eco/utils/popups/full_screen_loader.dart';
 import 'package:eco/utils/popups/loaders.dart';
@@ -17,6 +19,7 @@ class LoginController extends GetxController {
   final password = TextEditingController(); // Controller for password input
   GlobalKey<FormState> loginFormKey =
       GlobalKey<FormState>(); // Form key for form validation
+  final userController = Get.put(UserController());
 
   @override
   void onInit() {
@@ -25,7 +28,7 @@ class LoginController extends GetxController {
     super.onInit();
   }
 
-  // Login
+  // Email and password sign in
   void login() async {
     try {
       /// Start Loading
@@ -53,7 +56,7 @@ class LoginController extends GetxController {
       }
 
       /// Login user in firebase auth
-      final userCredential = await AuthenticationRepository.instance
+      await AuthenticationRepository.instance
           .signInWithEmailAndPassword(email.text.trim(), password.text.trim());
 
       /// Remove Loader
@@ -66,4 +69,39 @@ class LoginController extends GetxController {
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     }
   }
+
+  // Google SignIn Authentication
+  void googleSignIn() async {
+    try {
+      /// Start Loading
+      TFullScreenLoader.openLoadingDialog(
+          'Logging you in...', TImages.docerAnimation);
+
+      /// Check internet connectivity
+      final isConnected = await NetworkManager.instance.isConnected();
+      if (!isConnected) {
+        // Remove Loader
+        TFullScreenLoader.closeLoadingDialog();
+      }
+
+      /// Login user in firebase auth
+      final userCredential =
+          await AuthenticationRepository.instance.signInWithGoogle();
+
+      /// Save User Record
+      userController.saveRecords(userCredential);
+
+      /// Remove Loader
+      TFullScreenLoader.closeLoadingDialog();
+
+      /// Redirect
+      AuthenticationRepository.instance.screenRedirect();
+    } catch (e) {
+      TFullScreenLoader.closeLoadingDialog();
+
+      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
+  /// Send Password Reset Email
 }
