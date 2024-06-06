@@ -42,49 +42,49 @@ class SettingsScreen extends StatelessWidget {
 
             /// Body
             Padding(
-              padding: EdgeInsets.all(TSizes.defaultSpace),
+              padding: const EdgeInsets.all(TSizes.defaultSpace),
               child: Column(
                 children: [
                   /// Account Settings
-                  TSectionHeader(
+                  const TSectionHeader(
                       title: 'Account Settings', showActionButton: false),
-                  SizedBox(height: TSizes.spaceBtwItems),
+                  const SizedBox(height: TSizes.spaceBtwItems),
 
-                  TSettingsMenuTile(
+                  const TSettingsMenuTile(
                       icon: Iconsax.safe_home,
                       title: 'My Addresses',
                       subTitle: 'Set shopping delivery address'),
-                  TSettingsMenuTile(
+                  const TSettingsMenuTile(
                       icon: Iconsax.shopping_cart,
                       title: 'My Cart',
                       subTitle: 'Add, remove products and move to checkout'),
-                  TSettingsMenuTile(
+                  const TSettingsMenuTile(
                       icon: Iconsax.bag_tick,
                       title: 'My Orders',
                       subTitle: 'In-progress and completed orders'),
-                  TSettingsMenuTile(
+                  const TSettingsMenuTile(
                       icon: Iconsax.bank,
                       title: 'Bank Account',
                       subTitle: 'Withdraw balance to registered bank account'),
-                  TSettingsMenuTile(
+                  const TSettingsMenuTile(
                       icon: Iconsax.discount_shape,
                       title: 'My Coupons',
                       subTitle: 'List of all the discounted coupons'),
-                  TSettingsMenuTile(
+                  const TSettingsMenuTile(
                       icon: Iconsax.notification,
                       title: 'Notifications',
                       subTitle: 'Set any kind of notification message'),
-                  TSettingsMenuTile(
+                  const TSettingsMenuTile(
                       icon: Iconsax.security_card,
                       title: 'Account Privacy',
                       subTitle: 'Manage data usage and connected accounts'),
 
                   /// App Settings
-                  SizedBox(height: TSizes.spaceBtwSections),
-                  TSectionHeader(
+                  const SizedBox(height: TSizes.spaceBtwSections),
+                  const TSectionHeader(
                       title: 'App Settings', showActionButton: false),
-                  SizedBox(height: TSizes.spaceBtwItems),
-                  TSettingsMenuTile(
+                  const SizedBox(height: TSizes.spaceBtwItems),
+                  const TSettingsMenuTile(
                       icon: Iconsax.document_upload,
                       title: 'Load Data',
                       subTitle: 'Upload data to your cloud firebase'),
