@@ -11,6 +11,7 @@ import 'package:eco/utils/popups/loaders.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class UserController extends GetxController {
   static UserController get instance => Get.find();
@@ -19,6 +20,7 @@ class UserController extends GetxController {
   Rx<UserModel> user = UserModel.empty().obs;
 
   final hidePassword = false.obs;
+  final imageUploading = false.obs;
   final verifyEmail = TextEditingController();
   final verifyPassword = TextEditingController();
   final userRepository = Get.put(UserRepository());
@@ -42,26 +44,33 @@ class UserController extends GetxController {
   // Save user record from any Registration provider
   Future<void> saveRecords(UserCredential userCredential) async {
     try {
-      if (userCredential != null) {
-        // Convert name to first name and last name
-        final nameParts =
-            UserModel.nameParts(userCredential.user!.displayName ?? '');
-        final username =
-            UserModel.generateUserName(userCredential.user!.displayName ?? '');
+      // First Update Rx User and then check if user data is already stored. if not store new data.
+      await fetchUserRecord();
 
-        // Map data
-        final user = UserModel(
-          id: userCredential.user!.uid,
-          firstName: nameParts[0],
-          lastName: nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
-          email: userCredential.user!.email ?? '',
-          userName: username,
-          phoneNumber: userCredential.user!.phoneNumber ?? '',
-          profilePicture: userCredential.user!.photoURL ?? '',
-        );
+      if (user.value.id.isEmpty) {
+        // ignore: unnecessary_null_comparison
+        if (userCredential != null) {
+          // Convert name to first name and last name
+          final nameParts =
+              UserModel.nameParts(userCredential.user!.displayName ?? '');
+          final username = UserModel.generateUserName(
+              userCredential.user!.displayName ?? '');
 
-        // Save data
-        await userRepository.saveUserRecord(user);
+          // Map data
+          final user = UserModel(
+            id: userCredential.user!.uid,
+            firstName: nameParts[0],
+            lastName:
+                nameParts.length > 1 ? nameParts.sublist(1).join(' ') : '',
+            email: userCredential.user!.email ?? '',
+            userName: username,
+            phoneNumber: userCredential.user!.phoneNumber ?? '',
+            profilePicture: userCredential.user!.photoURL ?? '',
+          );
+
+          // Save data
+          await userRepository.saveUserRecord(user);
+        }
       }
     } catch (e) {
       TLoaders.warningSnackBar(
@@ -150,11 +159,41 @@ class UserController extends GetxController {
               verifyEmail.text.trim(), verifyPassword.text.trim());
       await AuthenticationRepository.instance.deleteAccount();
       TFullScreenLoader.closeLoadingDialog();
-      Get.offAll(()=> const LoginScreen());
+      Get.offAll(() => const LoginScreen());
     } catch (e) {
       // Remove Loader
       TFullScreenLoader.closeLoadingDialog();
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    }
+  }
+
+  /// Upload Profile Picture
+  uploadUserProfilePicture() async {
+    try {
+      final image = await ImagePicker().pickImage(
+          source: ImageSource.gallery,
+          imageQuality: 70,
+          maxHeight: 512,
+          maxWidth: 512);
+      if (image != null && image.path.isNotEmpty) {
+        imageUploading.value = true;
+
+        final imageUrl =
+            await userRepository.uploadImage("Users/Images/Profile/", image);
+        // update user image record
+        await userRepository.updateSingleField({"ProfilePicture": imageUrl});
+
+        user.value.profilePicture = imageUrl;
+        user.refresh();
+
+        TLoaders.successSnackBar(
+            title: 'Success!',
+            message: 'Your profile picture updated successfully');
+      }
+    } catch (e) {
+      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
+    } finally {
+      imageUploading.value = false;
     }
   }
 }

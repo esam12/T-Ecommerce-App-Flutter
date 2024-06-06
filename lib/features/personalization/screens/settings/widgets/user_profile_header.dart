@@ -1,4 +1,5 @@
 import 'package:eco/common/widgets/custom_shapes/containers/circular_image.dart';
+import 'package:eco/common/widgets/loaders/shimmer_effect.dart';
 import 'package:eco/features/personalization/controllers/user_controller.dart';
 import 'package:eco/features/personalization/screens/profile/profile.dart';
 import 'package:eco/utils/constants/colors.dart';
@@ -16,12 +17,21 @@ class TUserPofiileHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = UserController.instance;
     return ListTile(
-      leading: const TCircularImage(
-        image: TImages.user,
-        height: 50,
-        width: 50,
-        padding: 0,
-      ),
+      leading: Obx(() {
+        final networkImage = controller.user.value.profilePicture;
+        final image = networkImage.isNotEmpty ? networkImage : TImages.user;
+        return controller.imageUploading.value
+            ? const TShimmerEffect(
+                width: 50,
+                height: 50,
+              )
+            : TCircularImage(
+                image: image,
+                width: 50,
+                height: 50,
+                isNetworkImage: networkImage.isNotEmpty,
+              );
+      }),
       title: Text(
         controller.user.value.fullName,
         style: Theme.of(context)
