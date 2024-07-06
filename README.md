@@ -1,16 +1,9 @@
-# eco
+Flutter E-Commerce App Template
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+ <div class="image-gallery">
+        <img src="https://github.com/esam12/T-Ecommerce-App-Flutter/assets/68953701/d7d2302a-4934-46fe-815d-f4babbb1fe7a" alt="Image 1" width = "20%">
+        <img src="https://github.com/esam12/T-Ecommerce-App-Flutter/assets/68953701/20b74030-a675-41ec-8139-fb94638f5bca" alt="Image 2" width = "20%">
+        <img src="https://github.com/esam12/T-Ecommerce-App-Flutter/assets/68953701/64d6ab52-d28b-486e-8252-d14356fbcb90" alt="Image 3" width = "20%">
+        <img src="https://github.com/esam12/T-Ecommerce-App-Flutter/assets/68953701/0332e646-4071-4f94-872e-a389e647f553" alt="Image 4" width = "20%">
+        <img src="https://github.com/esam12/T-Ecommerce-App-Flutter/assets/68953701/863276c8-26f8-4c4a-9aa8-414d6d8fcf19" alt="Image 5" width = "20%">
+    </div>
