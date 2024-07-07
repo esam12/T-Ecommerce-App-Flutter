@@ -6,4 +6,16 @@ Flutter E-Commerce App Template
         <img src="https://github.com/esam12/T-Ecommerce-App-Flutter/assets/68953701/64d6ab52-d28b-486e-8252-d14356fbcb90" alt="Image 3" width = "20%">
         <img src="https://github.com/esam12/T-Ecommerce-App-Flutter/assets/68953701/0332e646-4071-4f94-872e-a389e647f553" alt="Image 4" width = "20%">
         <img src="https://github.com/esam12/T-Ecommerce-App-Flutter/assets/68953701/863276c8-26f8-4c4a-9aa8-414d6d8fcf19" alt="Image 5" width = "20%">
-    </div>
+ </div>
+
+ <div> 
+
+   
+  The FlutterShop template makes it easier to develop an e-commerce app using Flutter. It includes all the necessary pages to build a shopping app for both Android and iOS using flutter.
+ 
+ </div>
+
+
+
+https://github.com/esam12/T-Ecommerce-App-Flutter/assets/68953701/9d4f0e43-1631-439d-b1ec-9085d59ff4c1
+    
